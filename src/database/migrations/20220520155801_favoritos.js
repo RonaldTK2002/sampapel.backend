@@ -4,9 +4,11 @@
  */
 exports.up = function(knex) {
   return knex.schema.createTable('favoritos', function(table) {
-    table.string('favoritos_id').primary().notNullable();
-    table.string('user_id').primary().notNullable();
-    table.string('produtos_id').primary().notNullable();
+    table.string('favoritos_id').notNullable();
+    table.string('user_id').notNullable();
+    table.foreign('user_id').references('user_id').inTable('user').onDelete('cascade');
+    table.string('produtos_id').notNullable();
+    table.foreign('produtos_id').references('produtos_id').inTable('produtos').onDelete('cascade')
 
   });
 };
