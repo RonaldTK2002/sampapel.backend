@@ -8,6 +8,7 @@ exports.up = function(knex) {
         table.string('nome').notNullable();
         table.string('valor').notNullable();
         table.string('imagem').notNullable();
+        table.string('categoria').notNullable();
       });
 };
 

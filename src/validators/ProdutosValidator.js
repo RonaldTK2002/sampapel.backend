@@ -6,6 +6,7 @@ module.exports = {
       nome: Joi.string().required(),
       valor: Joi.string().required(),
       imagem: Joi.string().required(),
+      categoria: Joi.string().required(),
     }),
   }),
 
@@ -13,6 +14,7 @@ module.exports = {
     [Segments.QUERY]: Joi.object().keys({
       nome: Joi.string().optional(),
       produtos_id: Joi.number().optional(),
+      categoria: Joi.string().optional(),
 
     }),
   }),
