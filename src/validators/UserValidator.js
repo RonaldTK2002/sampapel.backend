@@ -31,6 +31,12 @@ module.exports = {
       telefone: Joi.string().optional(),
     }),
   }),
+  getById:celebrate({
+    [Segments.QUERY]:Joi.object().keys({
+      user_id: Joi.string().required(),
+    })
+
+  }),
 
   update: celebrate({
     [Segments.PARAMS]: Joi.object().keys({

@@ -37,6 +37,21 @@ module.exports = {
       });
     }
   },
+  async getById(request,response){
+    try {
+      const {user_id} = request.query;
+
+      const result = await UserModel.getById(user_id);
+
+      return response.status(200).json(result);
+    } catch (error) {
+      console.log("User get failed: " + error);
+
+      return response.status(500).json({
+        notification: "Internal server error while trying to get User",
+      });
+    }
+  },
   async update(request, response) {
     try {
       const { user_id } = request.params;

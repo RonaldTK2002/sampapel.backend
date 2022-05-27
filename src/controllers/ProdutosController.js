@@ -19,7 +19,7 @@ module.exports = {
   },
   async getByFields(request, response) {
     try {
-      const fields = request.body;
+      const fields = request.query;
 
       const result = await ProdutosModel.getByFields(fields);
 

@@ -5,6 +5,7 @@ module.exports = {
 
     async create(request,response){
         try{
+            const user_id = request.session.user
         const produtoFavorito = request.body;
         const result = await FavoritosModel.create(produtoFavorito);
         

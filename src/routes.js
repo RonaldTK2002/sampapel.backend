@@ -22,7 +22,7 @@ routes.post("/login", SessionValidator.signIn, SessionController.signIn);
 
 routes.post("/user", UserValidator.create, UserController.create);
 routes.put("/user/:user_id", UserValidator.update, UserController.update);
-routes.get("/user", UserValidator.getByFields, UserController.getByFields);
+routes.get("/user", UserValidator.getByFields, UserController.getById);
 routes.delete("/user/:user_id", UserValidator.delete, UserController.delete);
 
 //Produtos
