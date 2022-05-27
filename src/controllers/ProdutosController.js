@@ -32,6 +32,21 @@ module.exports = {
       });
     }
   },
+  async getById(request, response) {
+    try {
+      const {produtos_id}= request.query
+
+      const result = await ProdutosModel.getById(produtos_id);
+
+      return response.status(200).json(result);
+    } catch (error) {
+      console.log("Produtos get failed: " + error);
+
+      return response.status(500).json({
+        notification: "Internal server error while trying to get Produtos",
+      });
+    }
+  },
 
   async update(request, response) {
     try {

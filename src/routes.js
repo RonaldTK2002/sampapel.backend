@@ -38,6 +38,10 @@ routes.get(
   ProdutosValidator.getByFields,
   ProdutosController.getByFields
 );
+routes.get(
+  "/produtos",
+  ProdutosController.getById,
+);
 
 routes.delete(
   "/produtos/:produtos_id",
@@ -54,13 +58,13 @@ routes.post(
   FavoritosController.create
 );
 routes.get(
-  "/favoritos/:favoritos_id",
+  "/favoritos/:user_id",
   FavoritosValidator.getById,
   Authentication.authenticateToken,
   FavoritosController.getById
 );
 routes.delete(
-  "/favoritos/:favoritos_id",
+  "/favoritos/:produtos_id",
   FavoritosValidator.delete,
   Authentication.authenticateToken,
   FavoritosController.delete

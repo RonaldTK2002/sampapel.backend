@@ -5,11 +5,11 @@ module.exports = {
 
     async create(request,response){
         try{
-            const user_id = request.session.user
-        const produtoFavorito = request.body;
-        const result = await FavoritosModel.create(produtoFavorito);
+            const {user_id} = request.query;
+        const {produtos_id} = request.body;
+        const result = await FavoritosModel.create({user_id,produtos_id});
         
-        return response.status(200).json({favoritos_id:result[0]})
+        return response.status(200).json(result)
     }catch(error){
         console.warn('Favoritos creation failed' + error)
         return response.status(500).json({
@@ -19,13 +19,13 @@ module.exports = {
 },
 async getById(request,response){
     try{
-    const {favoritos_id} = request.params;
-    const result = await FavoritosModel.getById(favoritos_id)
+    const {user_id} = request.params;
+    const result = await FavoritosModel.getById(user_id)
     
-    if (result != 0 )
-    return response.status(200).json({notification: 'favoritos get successfully'})
-    else 
-    response.status(400).json({notification:'favoritos get failed'})
+    
+    return response.status(200).json(result)
+    
+    
 }catch(error){
     console.warn('Favoritos get failed' + error)
     return response.status(500).json({
@@ -35,8 +35,8 @@ async getById(request,response){
 },
 async delete(request,response){
     try{
-    const {favoritos_id} = request.params;
-    const result = await FavoritosModel.deleteById(favoritos_id);
+    const {produtos_id} = request.params;
+    const result = await FavoritosModel.deleteById(produtos_id);
     
     if (result != 0 )
     return response.status(200).json({notification: 'favoritos deletion successfully'})

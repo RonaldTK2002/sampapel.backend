@@ -11,6 +11,12 @@ module.exports = {
 
     return result;
   },
+  async getById(produtos_id) {
+    const result = await connection("produtos").where({produtos_id}).select("*");
+
+    return result;
+  },
+  
 
   async updateById(produtos_id, produto) {
     const result = await connection("produtos")

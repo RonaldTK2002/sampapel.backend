@@ -8,16 +8,16 @@ module.exports = {
 
         return result 
     },
-    async getById(favoritos_id){
+    async getById(user_id){
 
-        const result = await connection('favoritos').where({favoritos_id}).select('*');
+        const result = await connection('favoritos').where({user_id}).select('*');
 
         return result 
     },
     
-    async deleteById(favoritos_id){
+    async deleteById(produtos_id){
 
-        const result = await connection('favoritos').where({favoritos_id}).delete();
+        const result = await connection('favoritos').where({produtos_id}).delete();
 
         return result 
     },

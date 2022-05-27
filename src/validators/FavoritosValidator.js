@@ -3,8 +3,11 @@ const { celebrate, Segments, Joi } = require("celebrate");
 module.exports = {
   create: celebrate({
     [Segments.BODY]: Joi.object().keys({
-      user_id: Joi.string().required(),
+      
       produtos_id: Joi.number().required(),
+      [Segments.QUERY]: Joi.object().keys({
+        user_id: Joi.string().optional(),
+      }),
     }),
     [Segments.HEADERS]:Joi.object().keys({
       authorization:Joi.string().required()
@@ -13,13 +16,13 @@ module.exports = {
 
   getById: celebrate({
     [Segments.QUERY]: Joi.object().keys({
-      favoritos_id: Joi.number().optional(),
+      user_id: Joi.number().optional(),
     }),
   }),
 
   delete: celebrate({
     [Segments.PARAMS]: Joi.object().keys({
-      favoritos_id: Joi.number().required(),
+      produtos_id: Joi.number().required(),
     }),
   }),
 };

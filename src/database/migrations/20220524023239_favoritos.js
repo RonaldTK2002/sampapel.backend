@@ -4,7 +4,6 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('favoritos', function(table) {
-        table.increments('favoritos_id').primary().notNullable()
         table.string('user_id').notNullable();
         table.foreign('user_id').references('user_id').inTable('user').onDelete('cascade');
         table.integer('produtos_id').notNullable();
